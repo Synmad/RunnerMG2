@@ -544,9 +544,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6873268888906380157, guid: acdd28330873ccb40bcb565fb4ec0c58, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
+    - target: {fileID: 7290655305252919919, guid: acdd28330873ccb40bcb565fb4ec0c58, type: 3}
+      propertyPath: destroyTimer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acdd28330873ccb40bcb565fb4ec0c58, type: 3}
