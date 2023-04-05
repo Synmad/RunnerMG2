@@ -6,7 +6,7 @@ public class GroundManager : MonoBehaviour
 {
     [SerializeField] int destroyTimer;
 
-    void Start()
+    void Awake()
     {
         Object.Destroy(gameObject, destroyTimer);
     }
