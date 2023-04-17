@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerrainSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject ground;
+    [SerializeField] GameObject[] groundToSpawn;
     float zPosition = 26.516f;
 
     private void Update()
@@ -17,7 +17,8 @@ public class TerrainSpawner : MonoBehaviour
 
     IEnumerator SpawnGround()
     {
-        Instantiate(ground, new Vector3 (0, 0, zPosition), Quaternion.identity);
+        int n = Random.Range(0, groundToSpawn.Length);
+        Instantiate(groundToSpawn[n], new Vector3 (0, 0, zPosition), Quaternion.identity);
         zPosition += 26.516f;
         yield return new WaitForSeconds(1);
     }
