@@ -10,5 +10,4 @@ public class GroundManager : MonoBehaviour
     {
         Object.Destroy(gameObject, destroyTimer);
     }
-
 }

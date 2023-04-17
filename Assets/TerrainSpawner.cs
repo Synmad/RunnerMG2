@@ -7,15 +7,12 @@ public class TerrainSpawner : MonoBehaviour
     [SerializeField] GameObject[] groundToSpawn;
     float zPosition = 26.516f;
 
-    private void Update()
+    public void StartSpawnGround()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(SpawnGround());
-        }
+        StartCoroutine(SpawnGround());
     }
 
-    IEnumerator SpawnGround()
+    public IEnumerator SpawnGround()
     {
         int n = Random.Range(0, groundToSpawn.Length);
         Instantiate(groundToSpawn[n], new Vector3 (0, 0, zPosition), Quaternion.identity);

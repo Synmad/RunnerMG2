@@ -6,6 +6,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] int speed;
+    TerrainSpawner terrainspawner;
+    private void Awake()
+    {
+        terrainspawner = GameObject.Find("GameManager").GetComponent<TerrainSpawner>();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Check"))
+        {
+            terrainspawner.StartSpawnGround();
+        }
+        
+    }
 
     private void Update()
     {
@@ -17,7 +30,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = new Vector3(0, transform.position.y, transform.position.z);
             }
-            else if (transform.position.x == 0) 
+            else if (transform.position.x == 0)
             {
                 transform.position = new Vector3(3, transform.position.y, transform.position.z);
             }
@@ -29,12 +42,10 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = new Vector3(0, transform.position.y, transform.position.z);
             }
-            else if (transform.position.x == 0) 
-            { 
+            else if (transform.position.x == 0)
+            {
                 transform.position = new Vector3(-3, transform.position.y, transform.position.z);
             }
-
-
+        }
     }
-}
 }
