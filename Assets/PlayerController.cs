@@ -1,23 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] int speed;
+
+    GameObject gamemanager;
     TerrainSpawner terrainspawner;
+    SceneController scenecontroller;
+
     private void Awake()
     {
-        terrainspawner = GameObject.Find("GameManager").GetComponent<TerrainSpawner>();
+        gamemanager = GameObject.Find("GameManager");
+        terrainspawner = gamemanager.GetComponent<TerrainSpawner>();
+        scenecontroller = gamemanager.GetComponent<SceneController>();
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Check"))
+        if (other.CompareTag("Check"))
         {
             terrainspawner.StartSpawnGround();
         }
-        
+
+        if (other.CompareTag("Obstacle"))
+        {
+            scenecontroller.LoadGameOver();
+        }
     }
 
     private void Update()
