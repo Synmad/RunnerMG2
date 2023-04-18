@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
     GameObject gamemanager;
     TerrainSpawner terrainspawner;
     SceneController scenecontroller;
+    ScoreController scorecontroller;
 
     private void Awake()
     {
         gamemanager = GameObject.Find("GameManager");
         terrainspawner = gamemanager.GetComponent<TerrainSpawner>();
         scenecontroller = gamemanager.GetComponent<SceneController>();
+        scorecontroller = gamemanager.GetComponent<ScoreController>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +30,11 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             scenecontroller.LoadGameOver();
+        }
+
+        if (other.CompareTag("Score"))
+        {
+            scorecontroller.IncreaseScore(10);
         }
     }
 
